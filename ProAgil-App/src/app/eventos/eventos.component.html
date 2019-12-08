@@ -31,7 +31,7 @@
   </thead>
   
 <tbody *ngIf="eventos && eventos.length">
-  <tr *ngFor="let evento of eventos">
+  <tr *ngFor="let evento of eventosFiltrados">
     <td></td>
     <td>
         <img *ngIf="mostrarImg" src="http://localhost:5000/img/{{evento.imagemUrl}}" alt=""
@@ -45,7 +45,7 @@
     <td>{{evento.local}}</td>
     <td>{{evento.dataEvento}}</td>
     <td>{{evento.qtdPessoas}}</td>
-    <td>{{evento.lote}}</td>
+    <td>{{evento.lote | lowercase }}</td>
     <td>
       <button class="btn btn-success">Editar</button>
       <button class="btn btn-danger">Excluir</button>
