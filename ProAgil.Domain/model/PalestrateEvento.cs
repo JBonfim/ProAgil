@@ -8,9 +8,9 @@ namespace ProAgil.Domain.Model
     public class PalestrateEvento
     {
         public int PalestranteId { get; set; }
-        public Palestrante Paletrante { get; set; }
+        public Palestrante Paletrante { get;  }
         public int EventoId { get; set; }
 
-        public Evento Evento { get; set; }
+        public Evento Evento { get;  }
     }
 }
