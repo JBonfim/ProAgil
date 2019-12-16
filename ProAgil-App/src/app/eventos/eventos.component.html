@@ -15,9 +15,9 @@
       <th>#</th>
       <th>
         <button class="btn btn-defalt"
-        (click) = "mostrarImagem()"
-        >
-          Mostrar Img
+        (click) = "mostrarImagem()" >
+        <i class="{{mostrarImg ? 'fa fa-eye-slash' : 'fa fa-eye'}}"></i>
+         <!-- {{mostrarImg ? 'Ocultar' : 'Mostrar'}} Imagem--> 
         </button>
       </th>
       <th>Tema</th>
@@ -32,7 +32,7 @@
   
 <tbody *ngIf="eventos && eventos.length">
   <tr *ngFor="let evento of eventosFiltrados">
-    <td></td>
+    <td>{{evento.id}}</td>
     <td>
         <img *ngIf="mostrarImg" src="http://localhost:5000/img/{{evento.imagemUrl}}" alt=""
         [style.width.px] =  "imagemLargura"
@@ -43,16 +43,44 @@
     <td>{{evento.tema}}</td>
     
     <td>{{evento.local}}</td>
-    <td>{{evento.dataEvento}}</td>
+    <td>{{evento.dataEvento | DateTimeGeneratePipe}}</td>
     <td>{{evento.qtdPessoas}}</td>
-    <td>{{evento.lote | lowercase }}</td>
     <td>
-      <button class="btn btn-success">Editar</button>
-      <button class="btn btn-danger">Excluir</button>
+      <div *ngIf="!evento.lotes.length" >
+        Não informado!
+
+      </div>
+      <div *ngIf="evento.lotes.length" >
+        {{evento.lotes[0].nome | uppercase }}
+        
+      </div>
+    </td>
+    <td>
+      <div class="btn-group">
+        <button class=" btn btn-sm btn-success" (click) = "OpenModal(template)" tooltip="Editar">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn btn-sm btn-danger" tooltip="Excluir">
+          <i class="fa fa-eraser"></i>
+        </button>
+      </div>
     </td>
   </tr>
 </tbody>
 </table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
+
 <tfoot *ngIf="!eventos.length"> 
   <tr>
     <td colspan="7" class="text-center"> 
@@ -62,3 +90,4 @@
     </td>
   </tr>
 </tfoot>
+
