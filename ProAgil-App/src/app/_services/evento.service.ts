@@ -24,4 +24,11 @@ getEventoById(id: number): Observable<Evento>{
   return this.http.get<Evento>(`${this.baseUrl}/getByTema/${id}`);
 }
 
+
+postEvento(evento: Evento){
+  return this.http.post(this.baseUrl,evento);
+}
+
+
+
 }
