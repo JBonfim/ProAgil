@@ -20,7 +20,7 @@ getEventoByTema(tema: string): Observable<Evento[]>{
   return this.http.get<Evento[]>(`${this.baseUrl}/getByTema/${tema}`);
 }
 
-getEventoById(id : number): Observable<Evento>{
+getEventoById(id: number): Observable<Evento>{
   return this.http.get<Evento>(`${this.baseUrl}/getByTema/${id}`);
 }
 
