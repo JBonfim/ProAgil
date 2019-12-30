@@ -28,6 +28,13 @@ getEventoById(id: number): Observable<Evento>{
 postEvento(evento: Evento){
   return this.http.post(this.baseUrl,evento);
 }
+putEvento(evento: Evento){
+  return this.http.put(`${this.baseUrl}/getByTema/${evento.id}`,evento);
+}
+
+excluirEvento(evento: Evento){
+  return this.http.delete(`${this.baseUrl}/getByTema/${evento.id}`);
+}
 
 
 
