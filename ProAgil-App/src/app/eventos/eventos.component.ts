@@ -44,6 +44,7 @@ export class EventosComponent implements OnInit {
     this._FILTROLISTA = value;
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
+  
 
   editarEvento(evento: Evento,template: any){
     this.operacao = 'put';
